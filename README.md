@@ -1,4 +1,4 @@
-# Tower_of_Hanoi_Game
+# TOWER OF HANOI GAME
 **This repository builds an online Tower of Hanoi game.**
 
 # User Input
