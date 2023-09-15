@@ -29,11 +29,14 @@ def createStacks(stack_size: int) -> List:
     
     return stacks
     
-def displayStacks(stacks: List) -> None:
+def displayStacks(stacks: List[Stack]) -> None:
     print("\nYOUR STACKS:")
     print("A: " + str(stacks[0].stackToList()))
     print("B: " + str(stacks[1].stackToList()))
     print("C: " + str(stacks[2].stackToList()))
+
+def ProblemSolved(stacks: List[Stack], stack_size: int) -> bool:
+    return stacks[2].size == stack_size
 
 def main():
     print("TOWER OF HANOI")
@@ -45,17 +48,17 @@ def main():
     print("4. No disk can be placed on top of a smaller disk.")
     print("5. Only one disk can be moved at a time.")
 
+    # Asks user to choose level of difficulty:
     print("\nLEVEL OF DIFFICULTY:")
     print("(E) - Easy")
     print("(M) - Medium")
     print("(H) - Hard")
     difficulty_level = askDifficultyLevel()
 
+    # Creates and displays stacks:
     stack_size = getStackSize(difficulty_level)
     stacks = createStacks(stack_size)
     displayStacks(stacks)
-
-
 
     
 

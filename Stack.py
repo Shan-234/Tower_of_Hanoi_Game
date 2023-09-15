@@ -4,6 +4,10 @@ from typing import List
 class Stack:
     def __init__(self):
         self.top = None
+        self.size = 0
+    
+    def isEmpty(self) -> bool:
+        return self.size == 0
     
     def push(self, val: int):
         if not self.top:
@@ -11,6 +15,7 @@ class Stack:
         else:
             new_top = Disk(val, self.top)
             self.top = new_top
+        self.size += 1
         return self.top.val
     
     def pop(self):
@@ -19,6 +24,7 @@ class Stack:
             new_top = self.top.next
             self.top.next = None
             self.top = new_top
+            self.size -= 1
             return num
         return -1
     
