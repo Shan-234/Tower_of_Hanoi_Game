@@ -3,9 +3,9 @@
 
 # User Input
 **Level of Difficulty:** <br />
-     a. Easy -> 3 stacks <br />
-     b. Medium -> 4-5 stacks <br />
-     c. Hard -> 6-8 stacks <br />
+     a. Easy -> 3 Disks <br />
+     b. Medium -> 4-5 Disks <br />
+     c. Hard -> 6-8 Disks <br />
 
 # Prompts
 **1. Asks which stack the user wants to move from.** <br /> 
