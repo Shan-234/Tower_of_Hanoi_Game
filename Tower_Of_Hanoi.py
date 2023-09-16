@@ -2,6 +2,9 @@ from Stack import *
 from typing import List
 import random
 
+def getIndex(stack_letter: str) -> int:
+    return ord(stack_letter) - 65
+
 def askDifficultyLevel() -> str:
     difficulty_level = str(input("Which level of difficulty would you prefer? "))
     if (difficulty_level == "E") or (difficulty_level == "M") or (difficulty_level == "H"):
@@ -38,6 +41,29 @@ def displayStacks(stacks: List[Stack]) -> None:
 def ProblemSolved(stacks: List[Stack], stack_size: int) -> bool:
     return stacks[2].size == stack_size
 
+def MoveDisk(stacks: List[Stack], from_stack: str, to_stack: str) -> bool:
+    """
+    Moves a disk from stack (from_stack) to stack (to_stack). Returns boolean
+    indicating whether or not the disk could be moved.
+
+    :param stacks: List of stacks to be modified in place.
+    """
+    from_index = getIndex(from_stack)
+    to_index = getIndex(to_stack)
+
+    if from_index == to_index:
+        return False
+    else:
+        if stacks[from_index].isEmpty():
+            return False
+        elif not stacks[to_index].isEmpty():
+            if stacks[from_index].top.val > stacks[to_index].top.val:
+                return False
+        value = stacks[from_index].pop()
+        stacks[to_index].push(value)
+        return True
+
+
 def main():
     print("TOWER OF HANOI")
 
@@ -59,7 +85,27 @@ def main():
     # Creates and displays stacks:
     stack_size = getStackSize(difficulty_level)
     stacks = createStacks(stack_size)
+
+    # Keeps prompting user to move stacks until the problem is solved:
+    move_count = 0
+    min_moves = (2 ** (stack_size)) - 1
+    print("\nThis game can be completed in " + str(min_moves) + " moves.")
+    while not ProblemSolved(stacks, stack_size):
+        displayStacks(stacks)
+        from_stack = input("Which stack would you like to move from? ")
+        to_stack = input("Which stack would you like to move to? ")
+        moved = MoveDisk(stacks, from_stack, to_stack)
+        if moved:
+            move_count += 1
+    
+    # Displays that stacks one final time and indicates that the problem is solved:
     displayStacks(stacks)
+    print("\nCongratulations! You completed the game.")
+    if (move_count - min_moves) == 0:
+        print("You took the minimum number of moves to complete the game.")
+    else:
+        print("You took " + str(move_count - min_moves) + " more moves than the minimum to complete the game.")
+
 
     
 

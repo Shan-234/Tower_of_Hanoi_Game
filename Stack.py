@@ -16,9 +16,8 @@ class Stack:
             new_top = Disk(val, self.top)
             self.top = new_top
         self.size += 1
-        return self.top.val
     
-    def pop(self):
+    def pop(self) -> int:
         if self.top:
             num = self.top.val
             new_top = self.top.next
