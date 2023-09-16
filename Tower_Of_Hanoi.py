@@ -41,10 +41,11 @@ def ProblemSolved(stacks: List[Stack], stack_size: int) -> bool:
 def main():
     print("TOWER OF HANOI")
 
+    # Displays Instructions:
     print("\nINSTRUCTIONS:")
     print("1. You have three stacks (A, B, and C) and a number of disks of different sizes, initially stacked in decreasing order of size on stack A.")
     print("2. The goal is to move all disks from stack A to stack C.")
-    print("3. A disk can only be placed on top of a larger disk or an empty rod.")
+    print("3. A disk can only be placed on top of a larger disk or an empty stack.")
     print("4. No disk can be placed on top of a smaller disk.")
     print("5. Only one disk can be moved at a time.")
 
